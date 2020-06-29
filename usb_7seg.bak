@@ -643,9 +643,9 @@ Wire Wire Line
 	2950 1800 2850 1800
 Connection ~ 2850 1800
 Wire Wire Line
-	2850 1800 2850 1950
+	2850 1800 2850 2400
 Wire Wire Line
-	3250 1800 3400 1800
+	3250 1800 6200 1800
 Wire Wire Line
 	6200 1800 6200 2750
 Wire Wire Line
@@ -839,44 +839,4 @@ NoConn ~ 2250 1950
 NoConn ~ 2100 1950
 NoConn ~ 1950 1950
 NoConn ~ 1800 1950
-$Comp
-L Device:R R2
-U 1 1 5F611E76
-P 3100 1950
-F 0 "R2" V 3307 1950 50  0000 C CNN
-F 1 "R" V 3216 1950 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 3030 1950 50  0001 C CNN
-F 3 "~" H 3100 1950 50  0001 C CNN
-	1    3100 1950
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:C C2
-U 1 1 5F612656
-P 1500 4100
-F 0 "C2" H 1615 4146 50  0000 L CNN
-F 1 "C" H 1615 4055 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1538 3950 50  0001 C CNN
-F 3 "~" H 1500 4100 50  0001 C CNN
-	1    1500 4100
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	1500 4250 1900 4250
-Connection ~ 1900 4250
-Wire Wire Line
-	1500 3950 1500 3850
-Connection ~ 1500 3850
-Wire Wire Line
-	2950 1950 2850 1950
-Connection ~ 2850 1950
-Wire Wire Line
-	2850 1950 2850 2400
-Wire Wire Line
-	3250 1950 3400 1950
-Wire Wire Line
-	3400 1950 3400 1800
-Connection ~ 3400 1800
-Wire Wire Line
-	3400 1800 6200 1800
 $EndSCHEMATC
