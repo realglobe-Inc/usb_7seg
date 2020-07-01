@@ -135,10 +135,10 @@ F 9 "MAX7219CWG" H 5800 3450 50  0001 L CNN "Manufacturer_Part_Number"
 	1    0    0    -1  
 $EndComp
 $Comp
-L kicad_7segment_led:7segment_led U4
+L kicad_7segment_led:7segment_led U3
 U 1 1 5EFD705B
 P 9750 2100
-F 0 "U4" H 9950 2275 50  0000 C CNN
+F 0 "U3" H 9950 2275 50  0000 C CNN
 F 1 "7segment_led" H 9950 2184 50  0000 C CNN
 F 2 "kicad_7segment_led:kicad_7segment_led_0.56" H 10150 2200 50  0001 C CNN
 F 3 "" H 10150 2200 50  0001 C CNN
@@ -376,8 +376,6 @@ Connection ~ 2850 1800
 Wire Wire Line
 	2850 1800 2850 1950
 Wire Wire Line
-	3250 1800 3400 1800
-Wire Wire Line
 	6200 1800 6200 2750
 Wire Wire Line
 	6200 2750 6100 2750
@@ -598,21 +596,12 @@ Wire Wire Line
 	2950 1950 2850 1950
 Connection ~ 2850 1950
 Wire Wire Line
-	2850 1950 2850 2400
+	2850 1950 2850 2050
 Wire Wire Line
 	3250 1950 3400 1950
-Wire Wire Line
-	3400 1950 3400 1800
-Connection ~ 3400 1800
-Wire Wire Line
-	3400 1800 6200 1800
 NoConn ~ 2100 3700
 Wire Wire Line
 	3800 2400 3400 2400
-Wire Wire Line
-	3400 1950 3400 2400
-Connection ~ 3400 1950
-Connection ~ 3400 2400
 Connection ~ 3400 2700
 NoConn ~ 1900 3700
 Wire Wire Line
@@ -663,4 +652,19 @@ Wire Wire Line
 	6500 2250 7500 2250
 Wire Wire Line
 	6600 2150 7500 2150
+Wire Wire Line
+	3250 1800 3400 1800
+Wire Wire Line
+	3400 1950 3400 1800
+Connection ~ 3400 1800
+Wire Wire Line
+	3400 1800 6200 1800
+Wire Wire Line
+	3400 2400 3400 2050
+Wire Wire Line
+	3400 2050 2850 2050
+Connection ~ 3400 2400
+Connection ~ 2850 2050
+Wire Wire Line
+	2850 2050 2850 2400
 $EndSCHEMATC
