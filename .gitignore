@@ -1,0 +1,6 @@
+gerber
+*.bak
+_autosave-*
+*.kicad_pcb-bak
+*.sch-bak
+fp-info-cache
