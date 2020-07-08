@@ -150,30 +150,6 @@ X PA7_A8_D8_SCK 9 800 -300 100 L 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
-# kicad_7segment_led_7segment_led
-#
-DEF kicad_7segment_led_7segment_led U 0 40 Y Y 1 F N
-F0 "U" 400 100 50 H V C CNN
-F1 "kicad_7segment_led_7segment_led" 50 100 50 H V C CNN
-F2 "" 400 100 50 H I C CNN
-F3 "" 400 100 50 H I C CNN
-DRAW
-S 0 0 400 -600 0 1 0 N
-X E 1 -100 -50 100 R 50 50 1 1 P
-X F 10 500 -250 100 L 50 50 1 1 P
-X A 11 500 -150 100 L 50 50 1 1 P
-X C1 12 500 -50 100 L 50 50 1 1 P
-X D 2 -100 -150 100 R 50 50 1 1 P
-X DP 3 -100 -250 100 R 50 50 1 1 P
-X C 4 -100 -350 100 R 50 50 1 1 P
-X G 5 -100 -450 100 R 50 50 1 1 P
-X C4 6 -100 -550 100 R 50 50 1 1 P
-X B 7 500 -550 100 L 50 50 1 1 P
-X C3 8 500 -450 100 L 50 50 1 1 P
-X C2 9 500 -350 100 L 50 50 1 1 P
-ENDDRAW
-ENDDEF
-#
 # power_+5V
 #
 DEF power_+5V #PWR 0 0 Y Y 1 F P
@@ -212,6 +188,30 @@ F3 "" 0 0 50 H I C CNN
 DRAW
 P 6 0 1 0 0 0 0 50 -40 75 0 100 40 75 0 50 N
 X pwr 1 0 0 0 U 50 50 0 0 w
+ENDDRAW
+ENDDEF
+#
+# usb_7seg-rescue_7segment_led-kicad_7segment_led
+#
+DEF usb_7seg-rescue_7segment_led-kicad_7segment_led U 0 40 Y Y 1 F N
+F0 "U" 400 100 50 H V C CNN
+F1 "usb_7seg-rescue_7segment_led-kicad_7segment_led" 50 100 50 H V C CNN
+F2 "" 400 100 50 H I C CNN
+F3 "" 400 100 50 H I C CNN
+DRAW
+S 0 0 400 -600 0 1 0 N
+X E 1 -100 -50 100 R 50 50 1 1 P
+X F 10 500 -250 100 L 50 50 1 1 P
+X A 11 500 -150 100 L 50 50 1 1 P
+X C1 12 500 -50 100 L 50 50 1 1 P
+X D 2 -100 -150 100 R 50 50 1 1 P
+X DP 3 -100 -250 100 R 50 50 1 1 P
+X C 4 -100 -350 100 R 50 50 1 1 P
+X G 5 -100 -450 100 R 50 50 1 1 P
+X C4 6 -100 -550 100 R 50 50 1 1 P
+X B 7 500 -550 100 L 50 50 1 1 P
+X C3 8 500 -450 100 L 50 50 1 1 P
+X C2 9 500 -350 100 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
