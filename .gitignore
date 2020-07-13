@@ -5,3 +5,4 @@ _autosave-*
 *.kicad_pcb-bak
 *.sch-bak
 fp-info-cache
+*.code-workspace
