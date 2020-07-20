@@ -6,3 +6,4 @@ _autosave-*
 *.sch-bak
 fp-info-cache
 *.code-workspace
+.vscode
