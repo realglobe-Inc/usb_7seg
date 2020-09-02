@@ -84,6 +84,7 @@ void loop() {
         sc_strings_tmp[ suc_char_cnt ] = tmp;
         suc_state++;
         suc_correct_flg = 1;
+        buff_clr( sc_strings , STRING_MAX + 1 );
         buff_cp( sc_strings_tmp, sc_strings, suc_char_cnt + 1 );
       }
       else{
