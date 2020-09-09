@@ -2,6 +2,7 @@
 #include "LedControl.h"
 
 typedef unsigned char uchar;
+typedef unsigned int uint;
 
 /*
  Now we need a LedControl to work with.
@@ -13,10 +14,12 @@ typedef unsigned char uchar;
  */
 LedControl lc=LedControl(6,7,8,1);
 
-/* we always wait a bit between updates of the display */
-unsigned long delaytime=250;
-
+#define INTERVAL_UPDATE 1000
+#define INTERVAL_LOOP 10
 #define STRING_MAX 4
+
+static char sc_strings_tmp[ STRING_MAX + 1 ] = {0};
+static char sc_strings[ STRING_MAX + 1 ] = {0};
 
 void setup() {
   Serial.begin(9600);
@@ -36,18 +39,22 @@ void setup() {
 
 
 void loop() { 
-  static char sc_strings[ STRING_MAX + 1 ] = {0};
   char tmp = 0;
   uchar uc_loop_cnt = 0;
   static uchar suc_char_cnt = 0;
   static uchar suc_state = 0;
+  static uchar suc_correct_flg = 0;
+  static uint sui_interval_cnt = 0;
 
   switch ( suc_state )
   {
   case 0: // 初期化
+/*
     for( uc_loop_cnt = 0; uc_loop_cnt < STRING_MAX; uc_loop_cnt++ ){
-      sc_strings[uc_loop_cnt] = 0;
+      sc_strings_tmp[uc_loop_cnt] = 0;
     }
+*/
+    buff_clr( sc_strings_tmp , STRING_MAX + 1 );
     suc_char_cnt = 0;
     suc_state++;
     break;
@@ -55,13 +62,14 @@ void loop() {
     if( Serial.available() > 0 ){
       tmp = Serial.read();
       if( character_chack( tmp ) ){
-        sc_strings[ suc_char_cnt ] = tmp;
+        sc_strings_tmp[ suc_char_cnt ] = tmp;
         suc_char_cnt++;
         suc_state++;
       }
       else{
         lc.clearDisplay(0);
         suc_state = 0;
+        suc_correct_flg = 0;
       }
     }
     break;
@@ -69,27 +77,46 @@ void loop() {
     if( Serial.available() > 0 ){
       tmp = Serial.read();
       if( character_chack( tmp ) && ( suc_char_cnt < STRING_MAX ) ){
-        sc_strings[ suc_char_cnt ] = tmp;
+        sc_strings_tmp[ suc_char_cnt ] = tmp;
         suc_char_cnt++;
       }
       else if( '\n' == tmp ){
+        sc_strings_tmp[ suc_char_cnt ] = tmp;
         suc_state++;
+        suc_correct_flg = 1;
+        buff_clr( sc_strings , STRING_MAX + 1 );
+        buff_cp( sc_strings_tmp, sc_strings, suc_char_cnt + 1 );
       }
       else{
         lc.clearDisplay(0);
         suc_state = 0;
+        suc_correct_flg = 0;
       }
     }
     break;
   case 3: // 表示
     lc.clearDisplay(0);
     for( uc_loop_cnt = 0; uc_loop_cnt < STRING_MAX; uc_loop_cnt++ ){
-      lc.setDigit(0, uc_loop_cnt + STRING_MAX - suc_char_cnt , sc_strings[ uc_loop_cnt ] - 0x30 ,false);
+      lc.setDigit(0, uc_loop_cnt + STRING_MAX - suc_char_cnt , sc_strings_tmp[ uc_loop_cnt ] - 0x30 ,false);
     }
     suc_state = 0;
     break;
   default:
     break;
+  }
+
+  sui_interval_cnt += INTERVAL_LOOP;
+  delay( INTERVAL_LOOP );
+  if( INTERVAL_UPDATE <= sui_interval_cnt ){
+    sui_interval_cnt = 0;
+    Serial.print( "7seg=" );
+    if( suc_correct_flg ){
+      Serial.print( sc_strings );
+    }
+    else{
+      buff_clr( sc_strings , STRING_MAX + 1 );
+      Serial.println(  );
+    }
   }
 
 }
@@ -102,4 +129,20 @@ char character_chack( char c ){
   }
 
   return ret;
+}
+
+void buff_clr( char * buff, uchar cnt ){
+  uchar i = 0;
+
+  for( i = 0; i < cnt; i++){
+    buff[i] = 0;
+  }
+}
+
+void buff_cp( char * from, char * to, uchar cnt ){
+  uchar i = 0;
+
+  for( i = 0; i < cnt; i++){
+    to[i] = from[i];
+  }
 }
