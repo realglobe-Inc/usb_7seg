@@ -1,6 +1,8 @@
 //We always have to include the library
 #include "LedControl.h"
 
+#define STATUS_OK 0
+
 typedef unsigned char uchar;
 typedef unsigned int uint;
 
@@ -81,7 +83,6 @@ void loop() {
         suc_char_cnt++;
       }
       else if( '\n' == tmp ){
-        sc_strings_tmp[ suc_char_cnt ] = tmp;
         suc_state++;
         suc_correct_flg = 1;
         buff_clr( sc_strings , STRING_MAX + 1 );
@@ -115,8 +116,9 @@ void loop() {
     }
     else{
       buff_clr( sc_strings , STRING_MAX + 1 );
-      Serial.println(  );
     }
+  Serial.print(";status=");
+  Serial.println(STATUS_OK);
   }
 
 }
