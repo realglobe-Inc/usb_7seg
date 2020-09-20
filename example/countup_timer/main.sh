@@ -34,7 +34,7 @@ while read -r l; do
   wait "${write_pid}" 2>/dev/null > /dev/null || :
   ./write.sh "${tmp}" "${USB_7SEG}" &
   write_pid=$!
-  #printf '\033[1T'  # 1行戻る
+  printf '\033[1T'  # 1行戻る
 done
 
 # ここで通常の終了処理
