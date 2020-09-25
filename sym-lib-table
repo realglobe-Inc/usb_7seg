@@ -1,2 +1,3 @@
 (sym_lib_table
+  (lib (name usb_7seg-rescue)(type Legacy)(uri ${KIPRJMOD}/usb_7seg-rescue.lib)(options "")(descr ""))
 )
