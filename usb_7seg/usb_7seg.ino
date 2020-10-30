@@ -118,7 +118,8 @@ void loop() {
       buff_clr( sc_strings , STRING_MAX + 1 );
     }
   Serial.print(";status=");
-  Serial.println(STATUS_OK);
+  Serial.print(STATUS_OK);
+  Serial.print("\n");
   }
 
 }
