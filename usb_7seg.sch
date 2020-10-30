@@ -20,7 +20,7 @@ U 1 1 5EFAE698
 P 2000 2850
 F 0 "U1" H 1975 1911 50  0000 C CNN
 F 1 "SeeeduinoXIAO" H 1975 1820 50  0000 C CNN
-F 2 "Seeeduino XIAO:Seeeduino XIAO-MOUDLE14P-2.54-21X17.8MM" H 1650 3050 50  0001 C CNN
+F 2 "kicad_mylib:SeeedXIAO" H 1650 3050 50  0001 C CNN
 F 3 "" H 1650 3050 50  0001 C CNN
 	1    2000 2850
 	1    0    0    -1  
@@ -31,7 +31,7 @@ U 1 1 5EFAF3F1
 P 7600 2100
 F 0 "U2" H 7800 2275 50  0000 C CNN
 F 1 "7segment_led" H 7800 2184 50  0000 C CNN
-F 2 "kicad_7segment_led:kicad_7segment_led_0.56" H 8000 2200 50  0001 C CNN
+F 2 "kicad_mylib:7segment_led_0.56" H 8000 2200 50  0001 C CNN
 F 3 "" H 8000 2200 50  0001 C CNN
 	1    7600 2100
 	1    0    0    -1  
