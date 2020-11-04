@@ -1,7 +1,7 @@
 (export (version D)
   (design
-    (source /Users/inotatsu/work/kicad/usb_7seg/usb_7seg.sch)
-    (date "2020 July 08, Wednesday 12:27:00")
+    (source /Users/inotatsu/work/usb_series/usb_7seg/usb_7seg.sch)
+    (date "2020 October 30, Friday 13:48:34")
     (tool "Eeschema (5.1.2-1)-1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -17,13 +17,13 @@
   (components
     (comp (ref U1)
       (value SeeeduinoXIAO)
-      (footprint "Seeeduino XIAO:Seeeduino XIAO-MOUDLE14P-2.54-21X17.8MM")
+      (footprint kicad_mylib:SeeedXIAO)
       (libsource (lib Seeeduino_XIAO) (part SeeeduinoXIAO) (description ""))
       (sheetpath (names /) (tstamps /))
       (tstamp 5EFAE698))
     (comp (ref U2)
       (value 7segment_led)
-      (footprint kicad_7segment_led:kicad_7segment_led_0.56)
+      (footprint kicad_mylib:7segment_led_0.56)
       (libsource (lib usb_7seg-rescue) (part 7segment_led-kicad_7segment_led) (description ""))
       (sheetpath (names /) (tstamps /))
       (tstamp 5EFAF3F1))
@@ -232,7 +232,7 @@
     (library (logical Seeeduino_XIAO)
       (uri "/Users/inotatsu/work/kicad/kicad_lib/Seeeduino XIAO KICAD/Seeeduino XIAO.lib"))
     (library (logical usb_7seg-rescue)
-      (uri /Users/inotatsu/work/kicad/usb_7seg/usb_7seg-rescue.lib)))
+      (uri /Users/inotatsu/work/usb_series/usb_7seg/usb_7seg-rescue.lib)))
   (nets
     (net (code 1) (name "Net-(U1-Pad1)")
       (node (ref U1) (pin 1)))
