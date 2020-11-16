@@ -92,6 +92,9 @@ void loop() {
         lc.clearDisplay(0);
         suc_state = 0;
         suc_correct_flg = 0;
+        while( Serial.available() ){
+          tmp = Serial.read();
+        }
       }
     }
     break;
