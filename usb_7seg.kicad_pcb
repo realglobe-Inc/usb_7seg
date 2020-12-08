@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 1)
+    (drawings 2)
     (tracks 118)
     (zones 0)
     (modules 8)
@@ -1380,6 +1380,9 @@
       (net 36 "Net-(U3-Pad10)"))
   )
 
+  (gr_text "Common Anode" (at 36.83 -34.29) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
   (gr_text "2020 REALGLOBE Inc rev 0.3" (at 36.83 -45.72) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.3)))
   )
