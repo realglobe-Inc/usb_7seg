@@ -38,7 +38,6 @@ void loop() {
   switch ( suc_state )
   {
   case 0: // 初期化
-    Serial.print(0);
 /*
     for( uc_loop_cnt = 0; uc_loop_cnt < STRING_MAX; uc_loop_cnt++ ){
       sc_strings_tmp[uc_loop_cnt] = 0;
@@ -49,7 +48,6 @@ void loop() {
     suc_state++;
     break;
   case 1: // 受信する文字は数字のみ可
-    Serial.print(1);
     if( Serial.available() > 0 ){
       tmp = Serial.read();
       if( character_chack( tmp ) ){
@@ -58,14 +56,13 @@ void loop() {
         suc_state++;
       }
       else{
-        tm.init();
+        tm.clearDisplay();
         suc_state = 0;
         suc_correct_flg = 0;
       }
     }
     break;
   case 2: // 受信する文字は数字または改行コードのみ可
-    Serial.print(2);
     if( Serial.available() > 0 ){
       tmp = Serial.read();
       if( character_chack( tmp ) && ( suc_char_cnt < STRING_MAX ) ){
@@ -89,7 +86,6 @@ void loop() {
     }
     break;
   case 3: // 表示
-    Serial.print(3);
     tm.clearDisplay();
     for( uc_loop_cnt = 0; uc_loop_cnt < STRING_MAX; uc_loop_cnt++ ){
       tm.setDigit(uc_loop_cnt + STRING_MAX - suc_char_cnt , sc_strings_tmp[ uc_loop_cnt ] - 0x30 ,false);
