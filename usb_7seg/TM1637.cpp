@@ -18,7 +18,8 @@ static int8_t SegTbl[] = {
   0x39, // C
   0x5E, // d
   0x79, // E
-  0x71  // F
+  0x71, // F
+  0x00  // " "
 };
 
 void byteWrite(int8_t);
@@ -60,10 +61,10 @@ void TM1637::setDigit(uint8_t Digit, uint8_t Data, boolean Point)
 
 void TM1637::clearDisplay(void)
 {
-  setDigit(0x00, 0x7F, false);
-  setDigit(0x01, 0x7F, false);
-  setDigit(0x02, 0x7F, false);
-  setDigit(0x03, 0x7F, false);
+  setDigit(0x00, 0x10, false);
+  setDigit(0x01, 0x10, false);
+  setDigit(0x02, 0x10, false);
+  setDigit(0x03, 0x10, false);
 }
 
 void byteWrite(int8_t Data)
