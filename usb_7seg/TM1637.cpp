@@ -1,5 +1,9 @@
 #include "TM1637.h"
 
+#define SEG_OFF   0x10
+#define SEG_POINT 0x80
+#define SEG_BRIGHTNESS 3 // min:0,max:7
+
 uint8_t Clkpin;
 uint8_t Datapin;
 static int8_t SegTbl[] = {
@@ -45,7 +49,7 @@ void TM1637::setDigit(uint8_t Digit, uint8_t Data, boolean Point)
   int8_t SegData = SegTbl[Data];
   if(Point)
   {
-    SegData |= 0x80;
+    SegData |= SEG_POINT;
   }
   bitStart();
   byteWrite(0x44); // Data command setting
@@ -55,16 +59,16 @@ void TM1637::setDigit(uint8_t Digit, uint8_t Data, boolean Point)
   byteWrite(SegData); // Segment data setting
   bitStop();
   bitStart();
-  byteWrite(0x88|0x02); // Display control setting
+  byteWrite(0x88|SEG_BRIGHTNESS); // Display control setting
   bitStop();
 }
 
 void TM1637::clearDisplay(void)
 {
-  setDigit(0x00, 0x10, false);
-  setDigit(0x01, 0x10, false);
-  setDigit(0x02, 0x10, false);
-  setDigit(0x03, 0x10, false);
+  setDigit(0x00, SEG_OFF, false);
+  setDigit(0x01, SEG_OFF, false);
+  setDigit(0x02, SEG_OFF, false);
+  setDigit(0x03, SEG_OFF, false);
 }
 
 void byteWrite(int8_t Data)
