@@ -9,7 +9,7 @@
 typedef unsigned char uchar;
 typedef unsigned int uint;
 
-TM1637 tm=TM1637(PIN_CLK, PIN_DIO);
+TM1637 tm = TM1637(PIN_CLK, PIN_DIO);
 
 #define INTERVAL_UPDATE 1000
 #define INTERVAL_LOOP 10
@@ -29,7 +29,6 @@ void setup() {
 
 void loop() { 
   char tmp = 0;
-  uchar uc_loop_cnt = 0;
   static uchar suc_char_cnt = 0;
   static uchar suc_state = 0;
   static uchar suc_correct_flg = 0;
@@ -38,11 +37,6 @@ void loop() {
   switch ( suc_state )
   {
   case 0: // 初期化
-/*
-    for( uc_loop_cnt = 0; uc_loop_cnt < STRING_MAX; uc_loop_cnt++ ){
-      sc_strings_tmp[uc_loop_cnt] = 0;
-    }
-*/
     buff_clr( sc_strings_tmp , STRING_MAX + 1 );
     suc_char_cnt = 0;
     suc_state++;
@@ -50,7 +44,7 @@ void loop() {
   case 1: // 受信する文字は数字のみ可
     if( Serial.available() > 0 ){
       tmp = Serial.read();
-      if( character_chack( tmp ) ){
+      if( character_check( tmp ) ){
         sc_strings_tmp[ suc_char_cnt ] = tmp;
         suc_char_cnt++;
         suc_state++;
@@ -65,7 +59,7 @@ void loop() {
   case 2: // 受信する文字は数字または改行コードのみ可
     if( Serial.available() > 0 ){
       tmp = Serial.read();
-      if( character_chack( tmp ) && ( suc_char_cnt < STRING_MAX ) ){
+      if( character_check( tmp ) && ( suc_char_cnt < STRING_MAX ) ){
         sc_strings_tmp[ suc_char_cnt ] = tmp;
         suc_char_cnt++;
       }
@@ -87,7 +81,7 @@ void loop() {
     break;
   case 3: // 表示
     tm.clearDisplay();
-    for( uc_loop_cnt = 0; uc_loop_cnt < STRING_MAX; uc_loop_cnt++ ){
+    for( uchar uc_loop_cnt = 0; uc_loop_cnt < STRING_MAX; uc_loop_cnt++ ){
       tm.setDigit(uc_loop_cnt + STRING_MAX - suc_char_cnt , sc_strings_tmp[ uc_loop_cnt ] - 0x30 ,false);
     }
     suc_state = 0;
@@ -114,7 +108,7 @@ void loop() {
 
 }
 
-char character_chack( char c ){
+char character_check( char c ){
   char ret = 0;
 
   if( ( c >= '0' ) && ( c <= '9' ) ){
@@ -125,17 +119,13 @@ char character_chack( char c ){
 }
 
 void buff_clr( char * buff, uchar cnt ){
-  uchar i = 0;
-
-  for( i = 0; i < cnt; i++){
+  for( uchar i = 0; i < cnt; i++){
     buff[i] = 0;
   }
 }
 
 void buff_cp( char * from, char * to, uchar cnt ){
-  uchar i = 0;
-
-  for( i = 0; i < cnt; i++){
+  for( uchar i = 0; i < cnt; i++){
     to[i] = from[i];
   }
 }

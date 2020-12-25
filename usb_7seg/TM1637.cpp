@@ -73,11 +73,10 @@ void TM1637::clearDisplay(void)
 
 void byteWrite(int8_t Data)
 {
-  uint8_t i;
-  for(i=0; i<8; i++)
+  for(uint8_t i=0; i<8; i++)
   {
     digitalWrite(Clkpin, LOW);
-    if(Data & 0x01)digitalWrite(Datapin, HIGH);
+    if(Data&0x01)digitalWrite(Datapin, HIGH);
     else digitalWrite(Datapin, LOW);
     Data >>= 1;
     digitalWrite(Clkpin, HIGH);
